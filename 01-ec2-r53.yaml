@@ -3,8 +3,8 @@
   connection: local
   vars:
     ami_id: ami-09c813fb71547fc4f
-    sg_id: sg-07c8acf3fa6b923fa # replace with your SG ID
-    zone_id: "Z0948150OFPSYTNVYZOY" # replace with your ID
+    sg_id: sg-0a3888af697b99ce4 # replace with your SG ID
+    zone_id: "use1-az5" # replace with your ID
     domain_name: "funventuretime.fun"
     instances: 
     - MongoDB
