@@ -2,16 +2,24 @@
   hosts: local
   connection: local
   vars:
-    ami_id: "ami-09c813fb71547fc4f"
-    sg_id: "sg-0e57c05786dcd6326"
-    zone_id: "use1-az5"
-    domain_name: "funventuretime.time"
+    ami_id: ami-09c813fb71547fc4f
+    sg_id: sg-07c8acf3fa6b923fa # replace with your SG ID
+    zone_id: "Z0948150OFPSYTNVYZOY" # replace with your ID
+    domain_name: "funventuretime.fun"
     instance: 
-    - Redis
     - MongoDB
-    - catalogue
   tasks:
   - name: create ec2 instance
-    amezon.aws.ec2_instance:
-      name:
-    loop: "{{ instance }}"
+    amazon.aws.ec2_instance:
+      name: "{{ item }}"
+      instance_type: t3.micro
+      security_group: "{{ sg_id }}"
+      image_id: "{{ ami_id }}"
+      tags:
+        Name: "{{ item }}"
+    loop: "{{ instances }}"
+    register: ec2_output
+
+  - name: print the ec2 output
+    ansible.builtin.debug:
+      msg: "{{ ec2_output  }}"
