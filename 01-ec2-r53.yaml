@@ -9,6 +9,7 @@
     instance: 
     - Redis
     - MongoDB
+    - catalogue
   tasks:
   - name: create ec2 instance
     amezon.aws.ec2_instance:
